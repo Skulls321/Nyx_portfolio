@@ -1,0 +1,10 @@
+# Made in Blockbench 5.2.2
+newmtl m_e97c783b-b5c2-2ecb-f064-2e80fa55caea
+map_Kd handle.png
+newmtl m_5d10062d-3b75-b5aa-572d-c1f436dbdfdf
+map_Kd blade_layer.png
+newmtl m_4e631701-7cbe-cd47-ffaf-9669efa2f610
+map_Kd stripes.png
+newmtl m_7bcddc10-6b26-fbf8-6637-e81d163edced
+map_Kd blade_dark_moss.png
+newmtl none

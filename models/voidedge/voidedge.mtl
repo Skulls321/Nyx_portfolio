@@ -1,0 +1,10 @@
+# Made in Blockbench 5.2.2
+newmtl m_c10d2aa4-765b-4ca9-b7d6-c3cfbf532bbd
+map_Kd lower_hook.png
+newmtl m_f92d7396-d2e1-9e1e-521b-aab75840ed88
+map_Kd guard.png
+newmtl m_ac6d9dcd-a7cd-ec9d-e197-92ed3ed102b4
+map_Kd blade.png
+newmtl m_6f927ca6-b2b8-12ad-4744-fe8d9a54cd55
+map_Kd animated.png
+newmtl none

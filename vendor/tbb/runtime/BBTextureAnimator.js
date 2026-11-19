@@ -1,0 +1,70 @@
+function frameSequence(data, frameCount) {
+    const forward = Array.from({ length: frameCount }, (_, index) => index);
+    if (data.frame_order_type === "backwards")
+        return forward.reverse();
+    if (data.frame_order_type === "back_and_forth" && frameCount > 2) {
+        return [...forward, ...forward.slice(1, -1).reverse()];
+    }
+    if (data.frame_order_type === "custom" && data.frame_order !== undefined) {
+        const custom = data.frame_order
+            .split(/[\s,]+/)
+            .map((value) => Number.parseInt(value, 10))
+            .filter((value) => Number.isInteger(value) && value >= 0 && value < frameCount);
+        if (custom.length > 0)
+            return custom;
+    }
+    return forward;
+}
+export class BBTextureAnimator {
+    animated = [];
+    constructor(textures, textureData) {
+        for (const data of textureData) {
+            const texture = textures.get(data.uuid);
+            // frame count per Blockbench's Texture.frameCount: frames are
+            // square-ish vertical strips sized uv_width x uv_height
+            const ratio = data.width / data.height;
+            const uvRatio = (data.uv_width ?? data.width) / (data.uv_height ?? data.height);
+            const frameCount = ratio === uvRatio
+                ? 1
+                : Math.max(1, Math.ceil(uvRatio / ratio - 0.05));
+            if (texture === undefined || frameCount <= 1)
+                continue;
+            texture.repeat.y = 1 / frameCount;
+            const entry = {
+                texture,
+                data,
+                frames: frameSequence(data, frameCount),
+                elapsed: 0,
+                cursor: 0,
+            };
+            this.animated.push(entry);
+            this.applyFrame(entry, frameCount);
+        }
+    }
+    get count() {
+        return this.animated.length;
+    }
+    update(deltaSeconds) {
+        for (const entry of this.animated) {
+            const framesPerSecond = Math.max(0.01, entry.data.fps ?? (20 / Math.max(1, entry.data.frame_time ?? 1)));
+            const frameDuration = 1 / framesPerSecond;
+            entry.elapsed += Math.max(0, deltaSeconds);
+            let changed = false;
+            while (entry.elapsed >= frameDuration) {
+                entry.elapsed -= frameDuration;
+                entry.cursor = (entry.cursor + 1) % entry.frames.length;
+                changed = true;
+            }
+            if (changed) {
+                const frameCount = Math.round(1 / entry.texture.repeat.y);
+                this.applyFrame(entry, frameCount);
+            }
+        }
+    }
+    applyFrame(entry, frameCount) {
+        const frame = entry.frames[entry.cursor] ?? 0;
+        entry.texture.offset.y = frame / frameCount;
+        entry.texture.updateMatrix();
+    }
+}
+//# sourceMappingURL=BBTextureAnimator.js.map

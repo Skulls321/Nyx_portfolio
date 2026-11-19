@@ -1,0 +1,10 @@
+# Made in Blockbench 5.2.2
+newmtl m_3d711328-fadb-66f5-f2f4-177df3cb8d8b
+map_Kd handle.png
+newmtl m_9c6620ec-5a15-0cc9-a3d7-96e09b270d37
+map_Kd guard.png
+newmtl m_db950be9-6391-1d69-54a9-596ec01c654f
+map_Kd blade.png
+newmtl m_9c378104-8abf-4b75-5a61-e6037fc142a4
+map_Kd signature.png
+newmtl none

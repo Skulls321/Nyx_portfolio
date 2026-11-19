@@ -1,0 +1,14 @@
+# Made in Blockbench 5.2.2
+newmtl m_a2955a22-f559-8477-cbe6-cc54f704a77d
+map_Kd Handel.png
+newmtl m_dabbb8d0-a9eb-5475-80b3-ba3a89a1fd87
+map_Kd core.png
+newmtl m_ba03b570-5a3f-3158-0ea0-c72f1a1752a0
+map_Kd blade.png
+newmtl m_998d8c1e-b0fc-a9b1-b8e8-7856b3be4e15
+map_Kd blade_outer_layer.png
+newmtl m_4849093b-3dd1-2a2f-b731-c1d88418abad
+map_Kd Blade_inner_shade.png
+newmtl m_fcf4fc47-0512-7204-d595-ede48dfdb709
+map_Kd animated.png
+newmtl none

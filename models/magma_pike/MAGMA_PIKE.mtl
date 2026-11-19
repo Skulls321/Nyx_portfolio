@@ -1,0 +1,12 @@
+# Made in Blockbench 5.2.2
+newmtl m_870d3107-0e63-8c6b-4002-30dc7c5134a4
+map_Kd lower_hook.png
+newmtl m_af428ac7-51df-da27-4d3d-56118e549d03
+map_Kd hook layer.png
+newmtl m_7c54e5f4-ef12-82a5-aa4c-11d6ca792346
+map_Kd rod.png
+newmtl m_107ef91c-23ba-6a22-637e-33e6c3190bfb
+map_Kd blade.png
+newmtl m_c5a9693b-2932-2e7e-8ab9-296493835ae2
+map_Kd blade layer.png
+newmtl none
